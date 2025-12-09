@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="th">
+<head><meta charset="utf-8"><title>คำสั่งซื้อสร้างแล้ว</title></head>
+<body>
+  <h2>คำสั่งซื้อของคุณถูกสร้างแล้ว</h2>
+  <p>หมายเลขคำสั่งซื้อ: {{order_id}}</p>
+  <p>เกม: {{game}}</p>
+  <p>แพ็ก: {{pack_label}}</p>
+  <p>ราคา: {{price}} {{currency}}</p>
+  <h3>วิธีชำระเงิน</h3>
+  <p>โอนเงินไปที่บัญชี: {{bank_name}} ({{bank_number}})</p>
+  <img src="/static/qr_placeholder.png" alt="QR โอนเงิน" width="200">
+  <p>หรืออัปโหลดสลิปจากหน้านี้:</p>
+  <form action="/upload_slip/{{order_id}}" method="post" enctype="multipart/form-data">
+    <input type="file" name="slip"><br>
+    <button type="submit">อัปโหลดสลิป</button>
+  </form>
+  <p>รอการตรวจสอบจากแอดมิน</p>
+  <p><a href="/">กลับหน้าแรก</a></p>
+</body>
+</html>

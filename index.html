@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ร้าน พีพัดกระพล - เติมเกม</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ร้าน พีพัดกระพล</h1>
+    <p>หน้าเลือกเกมและแพ็กเพชร (ตัวอย่างไฟล์แบบ static)</p>
+    <form id="topupForm" onsubmit="return onSubmit(event)">
+      <label for="game">เลือกเกม</label>
+      <select id="game" name="game" required>
+        <option value="">-- เลือกเกม --</option>
+        <option value="Free Fire">Free Fire</option>
+        <option value="MLBB">Mobile Legends (MLBB)</option>
+        <option value="PUBG">PUBG Mobile</option>
+        <option value="Roblox">Roblox</option>
+        <option value="ROV">ROV</option>
+      </select>
+
+      <label for="uid">UID / ID ผู้เล่น</label>
+      <input id="uid" name="uid" type="text" placeholder="ใส่ UID เช่น 123456789" required>
+
+      <label for="pack">เลือกแพ็กเพชร</label>
+      <select id="pack" name="pack" required>
+        <option value="">-- เลือกแพ็ก --</option>
+        <option value="50_1500">50 💎 - 1,500 ₭</option>
+        <option value="100_3000">100 💎 - 3,000 ₭</option>
+        <option value="200_5800">200 💎 - 5,800 ₭</option>
+      </select>
+
+      <label for="lang">ภาษา</label>
+      <select id="lang" name="lang">
+        <option value="th">ไทย</option>
+        <option value="en">English</option>
+      </select>
+
+      <div class="actions">
+        <button type="submit">สร้างคำสั่งซื้อ (ตัวอย่าง)</button>
+      </div>
+    </form>
+
+    <div id="result" class="result" aria-live="polite" hidden></div>
+
+    <footer>
+      <p>ตัวอย่างหน้าแบบ static — ยังไม่เชื่อม API/ชำระเงินจริง</p>
+    </footer>
+  </div>
+
+<script>
+function onSubmit(e){
+  e.preventDefault();
+  const game = document.getElementById('game').value;
+  const uid = document.getElementById('uid').value.trim();
+  const pack = document.getElementById('pack').value;
+  const lang = document.getElementById('lang').value;
+  if(!game || !uid || !pack){
+    alert('กรุณากรอกข้อมูลให้ครบ');
+    return false;
+  }
+  const [diamonds, price] = pack.split('_');
+  const result = document.getElementById('result');
+  result.hidden = false;
+  result.innerHTML = `
+    <h3>คำสั่งซื้อตัวอย่าง</h3>
+    <p>เกม: <strong>${game}</strong></p>
+    <p>UID: <strong>${uid}</strong></p>
+    <p>แพ็ก: <strong>${diamonds} 💎</strong></p>
+    <p>ราคา: <strong>${price} ₭</strong></p>
+    <p>ภาษา: <strong>${lang === 'th' ? 'ไทย' : 'English'}</strong></p>
+    <p><em>หน้านี้เป็นตัวอย่างแบบ static — ยังไม่เชื่อม API หรือระบบชำระเงิน</em></p>
+  `;
+  return false;
+}
+</script>
+</body>
+</html>
