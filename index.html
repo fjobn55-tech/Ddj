@@ -1,80 +1,79 @@
 <!doctype html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ร้าน พีพัดกระพล - เติมเกม</title>
-  <link rel="stylesheet" href="static/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BlueBar — Game Top-Up</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>ร้าน พีพัดกระพล</h1>
-    <p>หน้าเลือกเกมและแพ็กเพชร (ตัวอย่างไฟล์แบบ static)</p>
-    <form id="topupForm" onsubmit="return onSubmit(event)">
-      <label for="game">เลือกเกม</label>
-      <select id="game" name="game" required>
-        <option value="">-- เลือกเกม --</option>
-        <option value="Free Fire">Free Fire</option>
-        <option value="MLBB">Mobile Legends (MLBB)</option>
-        <option value="PUBG">PUBG Mobile</option>
-        <option value="Roblox">Roblox</option>
-        <option value="ROV">ROV</option>
-      </select>
+  <header class="topbar">
+    <div class="left">
+      <button class="hamburger" aria-label="menu">☰</button>
+      <img src="logo.png" alt="BlueBar Logo" class="logo"/>
+    </div>
+    <div class="right">
+      <button class="lang">EN / USD</button>
+    </div>
+  </header>
 
-      <label for="uid">UID / ID ผู้เล่น</label>
-      <input id="uid" name="uid" type="text" placeholder="ใส่ UID เช่น 123456789" required>
+  <main>
+    <section class="search-wrap">
+      <input type="search" placeholder="Search games or goods" class="search"/>
+    </section>
 
-      <label for="pack">เลือกแพ็กเพชร</label>
-      <select id="pack" name="pack" required>
-        <option value="">-- เลือกแพ็ก --</option>
-        <option value="50_1500">50 💎 - 1,500 ₭</option>
-        <option value="100_3000">100 💎 - 3,000 ₭</option>
-        <option value="200_5800">200 💎 - 5,800 ₭</option>
-      </select>
-
-      <label for="lang">ภาษา</label>
-      <select id="lang" name="lang">
-        <option value="th">ไทย</option>
-        <option value="en">English</option>
-      </select>
-
-      <div class="actions">
-        <button type="submit">สร้างคำสั่งซื้อ (ตัวอย่าง)</button>
+    <section class="hero">
+      <div class="hero-slide">
+        <div class="hero-img">TO THE CITY<br/><span class="sm">UP TO 24% OFF</span></div>
       </div>
-    </form>
+    </section>
 
-    <div id="result" class="result" aria-live="polite" hidden></div>
+    <section class="categories">
+      <div class="cat"><div class="icon">$</div><div class="label">Top Up</div></div>
+      <div class="cat"><div class="icon">★</div><div class="label">Game Coins</div></div>
+      <div class="cat"><div class="icon">🎁</div><div class="label">Gift Card</div></div>
+      <div class="cat"><div class="icon">🧩</div><div class="label">Game Items</div></div>
+      <div class="cat"><div class="icon">🔑</div><div class="label">CDKEY</div></div>
+    </section>
 
-    <footer>
-      <p>ตัวอย่างหน้าแบบ static — ยังไม่เชื่อม API/ชำระเงินจริง</p>
-    </footer>
-  </div>
+    <section class="hot">
+      <div class="hot-header">
+        <h2>Hot-Selling Top-Up Games</h2>
+        <a class="alllink">All (96) ›</a>
+      </div>
+      <p class="sub">Safe and always at the affordable price</p>
 
-<script>
-function onSubmit(e){
-  e.preventDefault();
-  const game = document.getElementById('game').value;
-  const uid = document.getElementById('uid').value.trim();
-  const pack = document.getElementById('pack').value;
-  const lang = document.getElementById('lang').value;
-  if(!game || !uid || !pack){
-    alert('กรุณากรอกข้อมูลให้ครบ');
-    return false;
-  }
-  const [diamonds, price] = pack.split('_');
-  const result = document.getElementById('result');
-  result.hidden = false;
-  result.innerHTML = `
-    <h3>คำสั่งซื้อตัวอย่าง</h3>
-    <p>เกม: <strong>${game}</strong></p>
-    <p>UID: <strong>${uid}</strong></p>
-    <p>แพ็ก: <strong>${diamonds} 💎</strong></p>
-    <p>ราคา: <strong>${price} ₭</strong></p>
-    <p>ภาษา: <strong>${lang === 'th' ? 'ไทย' : 'English'}</strong></p>
-    <p><em>หน้านี้เป็นตัวอย่างแบบ static — ยังไม่เชื่อม API หรือระบบชำระเงิน</em></p>
-  `;
-  return false;
-}
-</script>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb genshin">Genshin</div>
+          <h3>Genshin Impact</h3>
+          <div class="meta">★ 5.0 · 100k+ Sold <span class="badge">-29%</span></div>
+        </article>
+        <article class="card">
+          <div class="thumb honkai">Honkai</div>
+          <h3>Honkai: Star Rail</h3>
+          <div class="meta">★ 5.0 · 100k+ Sold <span class="badge">-30%</span></div>
+        </article>
+        <article class="card">
+          <div class="thumb zenless">Zenless</div>
+          <h3>Zenless Zone Zero</h3>
+          <div class="meta">★ 5.0 · 100k+ Sold <span class="badge">-30%</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-row">
+      <button class="later">Later</button>
+      <button class="login">Log in / Sign up</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <div class="bn-item active">Home</div>
+    <div class="bn-item">Messages</div>
+    <div class="bn-item">Me</div>
+  </nav>
+
+  <script src="app.js"></script>
 </body>
 </html>
